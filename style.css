@@ -1,0 +1,98 @@
+/* Custom styles to enhance visual appearance */
+
+:root {
+    /* Color scheme */
+    --background-color: #f8f9fa;
+    --container-background-color: #ffffff;
+    --console-background-color: #f9f9f9;
+    --button-clear-color: #dc3545;
+    --button-run-color: #007bff;
+    --border-color: #ccc;
+    --heading-color: #333;
+    --text-color: #000;
+
+    /* Spacing and sizing */
+    --container-margin: 20px;
+    --container-padding: 20px;
+    --button-padding: 10px 20px;
+    --button-radius: 5px;
+    --console-padding: 10px;
+    --console-radius: 5px;
+
+    /* Typography */
+    --font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+/* Console container styling */
+#console-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--container-padding);
+    background-color: var(--container-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: var(--container-margin);
+}
+
+/* Console styling */
+#console {
+    border: 1px solid var(--border-color);
+    border-radius: var(--console-radius);
+    padding: var(--console-padding);
+    overflow-y: auto;
+    background-color: var(--console-background-color);
+}
+
+/* Button styling */
+.btn {
+    padding: var(--button-padding);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--button-radius);
+    margin-top: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    /* Text shadow for better readability */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.clear-btn {
+    background-color: var(--button-clear-color);
+}
+
+.run-btn {
+    background-color: var(--button-run-color);
+}
+
+/* Button hover and focus effect for better interaction feedback */
+.btn:hover,
+.btn:focus {
+    opacity: 0.9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none; /* Remove default focus outline and replace with box-shadow */
+}
+
+/* Enhancing accessibility */
+.btn:focus-visible {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading styling */
+h2 {
+    margin-top: 0;
+    color: var(--heading-color);
+    /* Smooth text rendering */
+    text-rendering: optimizeLegibility;
+}

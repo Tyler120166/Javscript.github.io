@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Sandbox</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f3f4f6;
+    }
+    #console-container {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+    }
+    #console {
+        height: calc(100% - 50px);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        overflow-y: auto;
+        background-color: #f9f9f9;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #45a049;
+    }
+    h2 {
+        margin-top: 0;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+<div id="console-container">
+    <h2>Console Output</h2>
+    <div id="console"></div>
+    <button class="btn" onclick="clearConsole()">Clear Console</button>
+    <button class="btn" onclick="executeCode()">Run Code</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
+<script>
+    const editor = CodeMirror(function(elt) {
+        document.getElementById('console').appendChild(elt);
+    }, {
+        mode: 'javascript',
+        lineNumbers: true,
+        theme: 'default',
+        value: localStorage.getItem('savedCode') || `// Welcome to the JavaScript Sandbox!\n\nconsole.log('Hello, world!');`
+    });
+
+    function clearConsole() {
+        document.getElementById('console').innerHTML = '';
+    }
+
+    function executeCode() {
+        const code = editor.getValue();
+        document.getElementById('console').innerHTML = '';
+        try {
+            eval(code);
+        } catch (error) {
+            document.getElementById('console').innerHTML += 'Error: ' + error.message + '<br>';
+        }
+    }
+</script>
+</body>
+</html>
